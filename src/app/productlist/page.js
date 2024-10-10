@@ -1,36 +1,33 @@
-// const productList = fetch("https://dummyjson.com/products")
-//   .then(resp => {
-//     return resp.json()
-//   }).then(data => {
-//     return data.products
-//   })
-
-// console.log(productList);
+import Pagewithevent from "./pagewithevent.js"
 
 
-
-async function productlist() {
-  const productList = await fetch("https://dummyjson.com/products")
-  const data = await productList.json()
-  return data.products
+async function serverSideData() {
+  const data = await fetch("https://dummyjson.com/products")
+  const productlist = await data.json()
+  return productlist.products
 }
 
-export async function page() {
-  const data = await productlist()
-  // console.log(data);
 
+export async function page() {
+  const listOfProducts = await serverSideData()
+  // console.log(listOfProducts);
 
 
   return (
     <div>
-      <h3>product Api</h3>
-      {
-        data.map((item) => {
-          return <h3 key={item.id}>Name :{item.title}</h3>
-        })
-      }
+      <h3>product list form serverSide</h3>
+      {listOfProducts.map((item) => {
+        return (
+          <div>
+            <h4 key={item.id}> name :{item.title}</h4>
+            <Pagewithevent price={item.price} category={item.category} />
+
+          </div>
+        )
+      })}
     </div>
   )
 }
 
-export default page
+
+export default page;
