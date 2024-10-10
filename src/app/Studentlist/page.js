@@ -18,6 +18,13 @@ const Studentlist = () => {
   ]
 
   return (
+    <div>
+      <ul>Student List </ul>
+      {data.map((list) => {
+        return <li onClick={() => { navbarfunction(list.id) }}>{list.name}</li>
+      })}
+    </div>
+
     // <div>
     //   <ul>
     //     <h1> Student List</h1>
@@ -28,12 +35,6 @@ const Studentlist = () => {
     //   </ul>
     // </div>
 
-    <div>
-      <ul>Student List </ul>
-      {data.map((list) => {
-        return <li onClick={() => { navbarfunction(list.id) }}>{list.name}</li>
-      })}
-    </div>
   )
 }
 
