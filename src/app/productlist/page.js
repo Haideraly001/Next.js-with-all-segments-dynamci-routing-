@@ -1,27 +1,25 @@
-import Pagewithevent from "./pagewithevent.js"
+import GettingEvents from "./pagewithevent";
 
-
-async function serverSideData() {
-  const data = await fetch("https://dummyjson.com/products")
-  const productlist = await data.json()
-  return productlist.products
+export async function dataApi() {
+  const data = await fetch("https://dummyjson.com/quotes");
+  const setData = await data.json();
+  return setData.quotes;
 }
 
 
-export async function page() {
-  const listOfProducts = await serverSideData()
-  // console.log(listOfProducts);
+export async function ApiCall() {
 
+  const isdata = await dataApi()
+  console.log(isdata)
 
   return (
     <div>
-      <h3>product list form serverSide</h3>
-      {listOfProducts.map((item) => {
+      <h2>Quotes Api data</h2>
+      {isdata.map((item) => {
         return (
           <div>
-            <h4 key={item.id}> name :{item.title}</h4>
-            <Pagewithevent price={item.price} category={item.category} />
-
+            <p>{item.quote}</p>
+            <GettingEvents author={item.author} />
           </div>
         )
       })}
@@ -29,5 +27,4 @@ export async function page() {
   )
 }
 
-
-export default page;
+export default ApiCall

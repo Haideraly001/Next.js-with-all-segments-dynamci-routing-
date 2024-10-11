@@ -1,24 +1,24 @@
 'use client'
-import React, { useState } from 'react';
+import { useState } from 'react'
 
+const GettingEvents = ({ author }) => {
 
-const Pagewithevent = ({ price, category }) => {
+  const [isCon, setIsCon] = useState("")
+  const [isFetch, setIsFetching] = useState(false)
 
-  const [showPrice, setShowPrice] = useState('')
-  const [showcategory, setShowCategory] = useState('')
-
-  function dataSet() {
-    setShowPrice(price)
-    setShowCategory(category)
+  function isFunction() {
+    setIsCon(author)
+    setIsFetching(true)
   }
+
   return (
     <div>
-      <button onClick={() => dataSet()}>More Details</button>
-      <p>Price: {showPrice}</p>
-      <p>Category: {showcategory}</p>
-
+      <button onClick={() => isFunction()}>more Details </button>
+      {
+        isFetch === true ? <p>Aurthor :{isCon}</p> : null
+      }
     </div>
   )
 }
 
-export default Pagewithevent
+export default GettingEvents;
