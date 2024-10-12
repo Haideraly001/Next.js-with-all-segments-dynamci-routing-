@@ -15,7 +15,7 @@ const GettingEvents = ({ author }) => {
     <div>
       <button onClick={() => isFunction()}>more Details </button>
       {
-        isFetch === true ? <p>Aurthor :{isCon}</p> : null
+        isFetch ? <p>Aurthor :{isCon}</p> : null
       }
     </div>
   )
