@@ -33,10 +33,14 @@ export default function layout({ children }) {
         </div> : <div>Loading data.... <br /><br /></div>
 
       }
-
-
-
       {children}
     </div >
   )
-}
+};
+
+// export function generateMetadata() {
+//   return {
+//     title: 'Login Page',
+//     description: 'This is the login page of the app.',
+//   };
+// }
